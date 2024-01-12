@@ -53,14 +53,19 @@ resource "aws_route_table" "terraform-public-route-table" {
 
 resource "aws_route_table" "terraform-private-route-table" {
   vpc_id = aws_vpc.terraform-default-vpc.id
+
+# Comment this out to cut cost and focus on igw only
+/*
   route {
     cidr_block = "0.0.0.0/16"
     gateway_id = aws_nat_gateway.terraform-ngw.id
   }
+*/
   tags = {
     Name = "terraform-private-route-table"
   }
 }
+
 
 # How to create internet gateway
 resource "aws_internet_gateway" "terraform-default-igw" {
@@ -82,6 +87,8 @@ resource "aws_route_table_association" "private-subnet-rt-association" {
   route_table_id = aws_route_table.terraform-private-route-table.id
 }
 
+# Comment this out to cut cost and focus on igw only
+/*
 resource "aws_eip" "terraform-nat-eip" {
   vpc = true
    tags = {
@@ -96,3 +103,4 @@ resource "aws_nat_gateway" "terraform-ngw" {
       Name = "terraform-nat-gateway"
       }
 }
+*/
