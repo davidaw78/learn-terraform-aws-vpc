@@ -70,3 +70,8 @@ resource "aws_route_table_association" "public-subnet-rt-association" {
   subnet_id      = aws_subnet.terraform-public-subnet.id
   route_table_id = aws_route_table.terraform-public-route-table.id
 }
+
+resource "aws_route_table_association" "private-subnet-rt-association" {
+  subnet_id      = aws_subnet.terraform-private-subnet.id
+  route_table_id = aws_route_table.terraform-private-route-table.id
+}
