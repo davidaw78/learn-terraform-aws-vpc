@@ -10,7 +10,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_vpc" "default_vpc" {
+resource "aws_vpc" "terraform-default-vpc" {
   cidr_block           = "10.2.0.0/16"
   enable_dns_support   = true
   enable_dns_hostnames = true
@@ -20,8 +20,8 @@ resource "aws_vpc" "default_vpc" {
   }
 }
 
-resource "aws_subnet" "public_subnets" {
-  vpc_id            = aws_vpc.default_vpc.id
+resource "aws_subnet" "terraform-public-subnet" {
+  vpc_id            = aws_vpc.terraform-default-vpc.id
   cidr_block        = "10.2.1.0/24"
   availability_zone = "us-east-1a"
   tags = {
@@ -29,29 +29,28 @@ resource "aws_subnet" "public_subnets" {
   }
 }
 
-resource "aws_subnet" "private_subnets" {
-  vpc_id            = aws_vpc.default_vpc.id
+resource "aws_subnet" "terraform-private-subnet" {
+  vpc_id            = aws_vpc.terraform-default-vpc.id
   cidr_block        = "10.2.2.0/24"
   availability_zone = "us-east-1a"
   tags = {
-    Name = "terrform-private-subnet-B"
+    Name = "terrform-private-subnet-A"
   }
 }
 
-resource "aws_route_table" "public-route-table" {
-  vpc_id = aws_vpc.default_vpc.id
-  route = {
-    cidr_block = "10.2.1.0/24"
-    subnet_id  = aws_subnet.public_subnets.id
-    gateway_id = aws_internet_gateway.gw.id
+resource "aws_route_table" "terraform-public-route-table" {
+  vpc_id = aws_vpc.terraform-default-vpc.id
+  route {
+    cidr_block = "0.0.0.0/16"
+    gateway_id = aws_internet_gateway.terraform-default-igw.id
   }
   tags = {
     Name = "terraform-public-route-table"
   }
 }
 
-resource "aws_route_table" "private-route-table" {
-  vpc_id = aws_vpc.default_vpc.id
+resource "aws_route_table" "terraform-private-route-table" {
+  vpc_id = aws_vpc.terraform-default-vpc.id
   route = []
   tags = {
     Name = "terraform-private-route-table"
@@ -59,11 +58,15 @@ resource "aws_route_table" "private-route-table" {
 }
 
 
-resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.default_vpc.id
+resource "aws_internet_gateway" "terraform-default-igw" {
+  vpc_id = aws_vpc.terraform-default-vpc.id
 
   tags = {
     Name = "terraform-igw"
   }
 }
 
+resource "aws_route_table_association" "public-subnet-rt-association" {
+  subnet_id      = aws_subnet.terraform-public-subnet.id
+  route_table_id = aws_route_table.terraform-public-route-table.id
+}
