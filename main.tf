@@ -53,7 +53,10 @@ resource "aws_route_table" "terraform-public-route-table" {
 
 resource "aws_route_table" "terraform-private-route-table" {
   vpc_id = aws_vpc.terraform-default-vpc.id
-  route = []
+  route {
+    cidr_block = "0.0.0.0/16"
+    gateway_id = aws_nat_gateway.terraform-ngw.id
+  }
   tags = {
     Name = "terraform-private-route-table"
   }
@@ -79,4 +82,17 @@ resource "aws_route_table_association" "private-subnet-rt-association" {
   route_table_id = aws_route_table.terraform-private-route-table.id
 }
 
+resource "aws_eip" "terraform-nat-eip" {
+  vpc = true
+   tags = {
+      Name = "terraform-nat-eip"
+      }
+}
 
+resource "aws_nat_gateway" "terraform-ngw" {
+  allocation_id = aws_eip.terraform-nat-eip.id
+  subnet_id     = aws_subnet.terraform-public-subnet.id
+  tags = {
+      Name = "terraform-nat-gateway"
+      }
+}
