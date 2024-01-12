@@ -20,6 +20,7 @@ resource "aws_vpc" "terraform-default-vpc" {
   }
 }
 
+# How to create public / private subnet
 resource "aws_subnet" "terraform-public-subnet" {
   vpc_id            = aws_vpc.terraform-default-vpc.id
   cidr_block        = "10.2.1.0/24"
@@ -38,6 +39,7 @@ resource "aws_subnet" "terraform-private-subnet" {
   }
 }
 
+# How to create custom route table
 resource "aws_route_table" "terraform-public-route-table" {
   vpc_id = aws_vpc.terraform-default-vpc.id
   route {
@@ -57,7 +59,7 @@ resource "aws_route_table" "terraform-private-route-table" {
   }
 }
 
-
+# How to create internet gateway
 resource "aws_internet_gateway" "terraform-default-igw" {
   vpc_id = aws_vpc.terraform-default-vpc.id
 
@@ -66,6 +68,7 @@ resource "aws_internet_gateway" "terraform-default-igw" {
   }
 }
 
+# How to associate route table with specific subnet
 resource "aws_route_table_association" "public-subnet-rt-association" {
   subnet_id      = aws_subnet.terraform-public-subnet.id
   route_table_id = aws_route_table.terraform-public-route-table.id
@@ -75,3 +78,5 @@ resource "aws_route_table_association" "private-subnet-rt-association" {
   subnet_id      = aws_subnet.terraform-private-subnet.id
   route_table_id = aws_route_table.terraform-private-route-table.id
 }
+
+
