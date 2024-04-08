@@ -1,3 +1,3 @@
 region          = "us-east-1"
-main-cidr-block = "10.0.0.0/27"
-project-tag     = "learn-tf-aws-vpc"
+main_cidr_block = "10.0.0.0/27"
+project_tag     = "learn-tf-aws-vpc"
