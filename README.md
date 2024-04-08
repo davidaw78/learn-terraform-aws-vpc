@@ -1,4 +1,10 @@
 # learn-terraform-aws-vpc
+
+alias tf="terraform"
+alias tfa="terraform apply --auto-approve"
+alias tfd="terraform destroy --auto-approve"
+alias tfm="terraform fmt; terraform validate; terraform plan"
+
 ## How to install terraform in ubuntu
 ```ruby
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
