@@ -5,6 +5,10 @@ alias tfa="terraform apply --auto-approve"
 alias tfd="terraform destroy --auto-approve"
 alias tfm="terraform fmt; terraform validate; terraform plan"
 
+## How to write terraform codes
+
+https://developer.hashicorp.com/terraform/language/style
+
 ## Template in use
 ```ruby
 https://earthly.dev/blog/create-manage-vpc-terraform/
