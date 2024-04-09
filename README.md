@@ -9,6 +9,8 @@ alias tfm="terraform fmt; terraform validate; terraform plan"
 
 https://developer.hashicorp.com/terraform/language/style
 
+https://docs.gruntwork.io/guides/style/terraform-style-guide/
+
 ## Template in use
 ```ruby
 https://earthly.dev/blog/create-manage-vpc-terraform/
