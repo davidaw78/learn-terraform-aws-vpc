@@ -5,6 +5,17 @@ alias tfa="terraform apply --auto-approve"
 alias tfd="terraform destroy --auto-approve"
 alias tfm="terraform fmt; terraform validate; terraform plan"
 ```
+
+## How to setup apache webserver for testing
+```ruby
+#!/bin/bash
+until ping -c1 8.8.8.8 &>/dev/null; do :; done
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello From App Server! This is $(hostname -f)</h1>" > /var/www/html/index.html
+```
 ## How to write terraform codes
 
 https://developer.hashicorp.com/terraform/language/style
