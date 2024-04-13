@@ -5,6 +5,11 @@ alias tfa="terraform apply --auto-approve"
 alias tfd="terraform destroy --auto-approve"
 alias tfm="terraform fmt; terraform validate; terraform plan"
 ```
+## When to use locals.tf, variables.tf and locals or data
+
+How to Use Terraform Variables (Locals, Input, Output, Environment) - https://spacelift.io/blog/how-to-use-terraform-variables
+
+Terraform Locals: What Are They, How to Use Them - https://spacelift.io/blog/terraform-locals
 
 ## How to setup apache webserver for testing
 ```ruby
