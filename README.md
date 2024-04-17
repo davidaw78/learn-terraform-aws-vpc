@@ -62,7 +62,8 @@ https://docs.gruntwork.io/guides/style/terraform-style-guide/
 https://earthly.dev/blog/create-manage-vpc-terraform/
 https://spacelift.io/blog/terraform-aws-vpc
 ```
-## How to install terraform in ubuntu
+## https://developer.hashicorp.com/terraform/install
+Linux
 ```ruby
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
