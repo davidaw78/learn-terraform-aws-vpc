@@ -9,8 +9,18 @@ alias tfm="terraform fmt; terraform validate; terraform plan"
 ## full free course on terraform
 https://cloudcasts.io/course/terraform/introducing-terraform
 
+## Where to find health of user_data in...
+Windows
+```ruby
+C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log
+C:\Windows\Temp\UserScript.ps1
+```
+Linux
+```ruby
+/var/log/cloud-init.log
+/var/log/cloud-init-output.log.log
+```
 ## When to use locals.tf, variables.tf and locals or data
-
 How to Use Terraform Variables (Locals, Input, Output, Environment) - https://spacelift.io/blog/how-to-use-terraform-variables
 
 Terraform Locals: What Are They, How to Use Them - https://spacelift.io/blog/terraform-locals
