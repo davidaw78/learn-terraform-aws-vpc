@@ -1,6 +1,7 @@
 # learn-terraform-aws-vpc
 ```ruby
 alias tf="terraform"
+alias tfi="terraform init"
 alias tfa="terraform apply --auto-approve"
 alias tfd="terraform destroy --auto-approve"
 alias tfm="terraform fmt; terraform validate; terraform plan"
