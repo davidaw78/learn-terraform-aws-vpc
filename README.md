@@ -73,11 +73,9 @@ https://earthly.dev/blog/create-manage-vpc-terraform/
 https://spacelift.io/blog/terraform-aws-vpc
 ```
 ## https://developer.hashicorp.com/terraform/install
-Linux
+Check OS version for Linux
 ```ruby
-wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install terraform
+cat /etc/os-release
 ```
 ## How to install AWS cli
 ```ruby
